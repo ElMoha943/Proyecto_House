@@ -36,10 +36,10 @@ void ProcesarArray(void){
     unsigned char i, cosa=0;
     char Auxi[6];
     int Destino;
+    if(EsParaMi()){
     //CONSULTA REF
-    if ((ArrayProc[0]=='[')&&(ArrayProc[1]=='C')&&(ArrayProc[2]=='R')&&(ArrayProc[3]==',')&&(ArrayProc[5]==',')&&(ArrayProc[11]==']')){
-        // En posiciones 6 a 10 tengo los caracteres que representan el número de dispositivo con quien se quiere comunicar 
-        if(EsParaMi()){
+        if ((ArrayProc[0]=='[')&&(ArrayProc[1]=='C')&&(ArrayProc[2]=='R')&&(ArrayProc[3]==',')&&(ArrayProc[5]==',')&&(ArrayProc[11]==']')){
+            // En posiciones 6 a 10 tengo los caracteres que representan el número de dispositivo con quien se quiere comunicar 
             if(ArrayProc[4]=='1'){ // El maestro me solicita la REF1
                 SendSerial(REF1,10);
             }
@@ -47,10 +47,8 @@ void ProcesarArray(void){
                 SendSerial(REF2,50);
             }
         }
-    }
-    //PEDIDO DE ACCION
-    else if ((ArrayProc[0]=='[')&&(ArrayProc[1]=='P')&&(ArrayProc[2]=='A')&&(ArrayProc[3]==',')&&(ArrayProc[5]==',')&&(ArrayProc[11]==',')&&(ArrayProc[14]==',')&&(ArrayProc[17]==']')){
-        if(EsParaMi()){
+        //PEDIDO DE ACCION
+        else if ((ArrayProc[0]=='[')&&(ArrayProc[1]=='P')&&(ArrayProc[2]=='A')&&(ArrayProc[3]==',')&&(ArrayProc[5]==',')&&(ArrayProc[11]==',')&&(ArrayProc[14]==',')&&(ArrayProc[17]==']')){
             if(ArrayProc[4]=='1'){ // LEDS
                 if(ArrayProc[12]=='1'){
                     if(LED1==1)LED1=0;
@@ -95,11 +93,9 @@ void ProcesarArray(void){
                else Relay=1;
             }
         }
-    }
-    //CONSULTA A DISPOSITIVO
-    else if ((ArrayProc[0]=='[')&&(ArrayProc[1]=='C')&&(ArrayProc[2]=='O')&&(ArrayProc[3]==',')&&(ArrayProc[5]==',')&&(ArrayProc[11]==',')&&(ArrayProc[14]==',')&&(ArrayProc[17]==']')){
-        unsigned char caca[6], valor=0;
-        if(EsParaMi()){
+        //CONSULTA A DISPOSITIVO
+        else if ((ArrayProc[0]=='[')&&(ArrayProc[1]=='C')&&(ArrayProc[2]=='O')&&(ArrayProc[3]==',')&&(ArrayProc[5]==',')&&(ArrayProc[11]==',')&&(ArrayProc[14]==',')&&(ArrayProc[17]==']')){
+            unsigned char caca[6], valor=0;
             if(ArrayProc[4]=='1'){ //TEMPERATURA
                 ADCON0bits.GO=1;
                 while(ADCON0bits.GO==1)
@@ -114,7 +110,6 @@ void ProcesarArray(void){
             }
         }
     }
-    else SendSerial("sad",3);
 }
 
 unsigned char EsParaMi(){ //[CR,1,00001]e
