@@ -33,13 +33,10 @@ void RX_Byte(void){
 }
 
 void ProcesarArray(void){
-    unsigned char i, cosa=0;
-    char Auxi[6];
-    int Destino;
     if(EsParaMi()){
     //CONSULTA REF
         if ((ArrayProc[0]=='[')&&(ArrayProc[1]=='C')&&(ArrayProc[2]=='R')&&(ArrayProc[3]==',')&&(ArrayProc[5]==',')&&(ArrayProc[11]==']')){
-            // En posiciones 6 a 10 tengo los caracteres que representan el número de dispositivo con quien se quiere comunicar 
+            // En posiciones 6 a 10 tengo los caracteres que representan el nÃºmero de dispositivo con quien se quiere comunicar 
             if(ArrayProc[4]=='1'){ // El maestro me solicita la REF1
                 SendSerial(REF1,10);
             }
