@@ -53,20 +53,7 @@ void main(){
     ADCON1bits.VCFG0=0; ADCON1bits.VCFG1=0;
     ADCON0bits.ADON=1;
     ADCON0bits.CHS0=1; ADCON0bits.CHS1=0; ADCON0bits.CHS2=0; ADCON0bits.CHS3=1;
-    
-    //Configura PWM
-    CCP1CON = 0; // Apago módulo CCP
-    TMR2 = 0; // Limpio el Timer2
-    PR2 = 0x7F; // Cargo el periodo del PWM
-    CCPR1L = 0x1F; // Cargo el duty cycle
-    INTCON = 0; // Deshabilito interrupciones y limpio T0IF
-    CCP1CON = 0x0C; // Configuro modo PWM
-    // 2 bits menos significativos del Duty cycle = 00
-    T2CONbits.TOUTPS0 = 1;
-    T2CONbits.TOUTPS1 = 0;
-    T2CONbits.TOUTPS2 = 0;
-    T2CONbits.TOUTPS3 = 0;
-    T2CONbits.TMR2ON = 1; // Arranco Timer2
+
     
     LED1 = 0;
     LED2 = 0;
@@ -75,17 +62,9 @@ void main(){
     VentTrans1 = 0;
     VentTrans2 = 0;
     while(1){
+        //RECIBE UN COMANDO
         if (RCIF == 1){
             RX_Byte();
         }
-//        if (PIR1bits.TMR2IF == 1){
-//            if (CCPR1L == 0x1F){
-//                CCPR1L = 0x3F;
-//            }
-//            else{
-//                CCPR1L = 0x1F;
-//            }
-//            PIR1bits.TMR2IF = 0;
-//        }
     }
 }
