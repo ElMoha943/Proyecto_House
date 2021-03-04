@@ -2,13 +2,12 @@
 #define	HOUSE_H
 
 #define _XTAL_FREQ 4000000
-#define LED1 RB5
-#define LED2 RB6 
+#define LED1 RC0
+#define LED2 RC1
 #define Relay RC2
 #define Buzzer RC3
 #define VentTrans1 RC4
 #define VentTrans2 RC5
-#define CPP1 RC1
 
 //VARIABLES
 unsigned char J[5]="00001", REF1[10]="Dir1", REF2[50]="Controla los aparatos de una casa inteligente.";
@@ -22,4 +21,3 @@ void ProcesarArray(void);
 unsigned char EsParaMi(void);
 
 #endif	/* HOUSE_H */
-
