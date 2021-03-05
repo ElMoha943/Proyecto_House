@@ -27,8 +27,8 @@ void main(){
     OPTION_REG=0x04;
     TRISB=0x3F;
     TRISA=0xFF;
-    TRISC=0x00
-    TRISB7=1;
+    TRISC=0x00;
+    TRISC7=1;
     
     //Configura UART a 9600 baudios
     TXSTAbits.TXEN=1;
