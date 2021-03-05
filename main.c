@@ -27,14 +27,8 @@ void main(){
     OPTION_REG=0x04;
     TRISB=0x3F;
     TRISA=0xFF;
-    TRISC0=0;
-    TRISC1=0; // Configuro el pin CCP como salida en el puerto C
-    TRISC2=0;
-    TRISC3=0;
-    TRISC4=0;
-    TRISC5=0;
-    TRISB5=0;
-    TRISB6=0;
+    TRISC=0x00
+    TRISB7=1;
     
     //Configura UART a 9600 baudios
     TXSTAbits.TXEN=1;
@@ -44,7 +38,6 @@ void main(){
     BAUDCTLbits.BRG16=0;
     SPBRG=25;
     SPBRGH=0;
-    OPTION_REG=0x04;
     
     //Configura puerto AD
     ANSELH=0;
@@ -54,13 +47,13 @@ void main(){
     ADCON0bits.ADON=1;
     ADCON0bits.CHS0=1; ADCON0bits.CHS1=0; ADCON0bits.CHS2=0; ADCON0bits.CHS3=1;
 
-    
     LED1 = 0;
     LED2 = 0;
     Relay = 0;
     Buzzer = 0;
     VentTrans1 = 0;
     VentTrans2 = 0;
+    
     while(1){
         //RECIBE UN COMANDO
         if (RCIF == 1){
