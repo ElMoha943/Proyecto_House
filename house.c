@@ -93,8 +93,15 @@ void ProcesarArray(void){
         //CONSULTA A DISPOSITIVO
         else if ((ArrayProc[0]=='[')&&(ArrayProc[1]=='C')&&(ArrayProc[2]=='O')&&(ArrayProc[3]==',')&&(ArrayProc[5]==',')&&(ArrayProc[11]==',')&&(ArrayProc[14]==',')&&(ArrayProc[17]==']')){
             if(ArrayProc[4]=='1'){ //TEMPERATURA
+                unsigned int caca;
                 unsigned char cosa[4];
+                ADCON0bits.GO=1;
+                while (ADCON0bits.GO==1)
+                caca= (ADRESH<<8)+ADRESL;
+                __delay_ms(2);
+                valor= (((float)caca)*5/1023)*100;
                 sprintf(cosa,"%.1f",valor);
+                SendSerial(cosa)
             }
         }
     }
