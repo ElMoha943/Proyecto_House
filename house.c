@@ -58,7 +58,7 @@ void ProcesarArray(void){
                 }
                 else
                 {
-                    SendSerial("ERROR: debe ser 1/2",25);
+                    SendSerial("ERROR: debe ser 1/2");
                 }
             }
             if(ArrayProc[4]=='2'){ // BUZZERS
@@ -82,7 +82,7 @@ void ProcesarArray(void){
                 }
                 else
                 {
-                    SendSerial("ERROR: debe ser 1/2/3",25);
+                    SendSerial("ERROR: debe ser 1/2/3");
                 }
             }
             if(ArrayProc[4]=='4'){ // RELEE
